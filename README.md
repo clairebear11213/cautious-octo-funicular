@@ -1,7 +1,7 @@
 # CSC 413 - Project Two - The Interpreter
 
-## Student Name  : Claire McCullough
+## Student Name  : Name here
 
-## Student ID    : 917390856
+## Student ID    : ID here
 
-## Student Email : cmccullough@mail.sfsu.edu
+## Student Email : Email here
