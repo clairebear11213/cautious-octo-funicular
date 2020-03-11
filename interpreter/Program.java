@@ -1,6 +1,11 @@
 package interpreter;
 
+import interpreter.bytecode.ByteCode;
+import interpreter.bytecode.AddressLabel;
+import interpreter.bytecode.LabelCode;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Program {
 
@@ -10,8 +15,16 @@ public class Program {
         program = new ArrayList<>();
     }
 
+    public Program(ArrayList<ByteCode> loadedByteCodes) {
+        program = loadedByteCodes;
+    }
+
     protected ByteCode getCode(int programCounter) {
         return this.program.get(programCounter);
+    }
+
+    public int getSize() {
+        return this.program.size();
     }
 
     /**
@@ -21,10 +34,16 @@ public class Program {
      * HINT: make note what type of data-structure ByteCodes are stored in.
      */
     public void resolveAddress() {
-
+        HashMap<String, Integer> addresses = new HashMap<>();
+        for (int i = 0; i < program.size(); i++) {
+            if (program.get(i) instanceof LabelCode) {
+                addresses.put(((LabelCode) program.get(i)).getLabel(), i);
+            }
+        }
+        for (ByteCode bc : program) {
+            if (bc instanceof AddressLabel) {
+                ((AddressLabel) bc).setAddress(addresses.get(((AddressLabel) bc).getLabel()));
+            }
+        }
     }
-
-
-
-
 }

@@ -9,6 +9,9 @@ package interpreter;
 import java.util.HashMap;
 
 public class CodeTable {
+    //used by the ByteCodeLoader Class
+    //stores a HashMap - allows us to have a mapping between ByteCodes as they appear in the source code and their respective classes in the Interpreter project
+    //can be populated through an initialization method - ok to hard-code the statements that populate the data in this class
     
     private static HashMap<String,String> codeTable;
     
